@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>เข้าสู่ระบบ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>เข้าสู่ระบบ</h2>
+        <input type="email" id="email" placeholder="อีเมล">
+        <input type="password" id="password" placeholder="รหัสผ่าน">
+        <button onclick="login()">เข้าสู่ระบบ</button>
+        <p>ยังไม่มีบัญชี? <a href="register.html">สมัครสมาชิก</a></p>
+    </div>
+    
+    <script src="firebase-config.js"></script>
+    <script>
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => window.location.href = "index.html")
+                .catch(error => alert(error.message));
+        }
+    </script>
+</body>
+</html>
